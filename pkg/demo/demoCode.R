@@ -1,0 +1,9 @@
+data<-read.csv("/testData.csv",header=TRUE,stringsAsFactors=FALSE)
+thread_id<-data$thread_id
+post_time<-data$post_time
+post_text<-data$post_text
+relevant_words<-c("java","assignment","class","function","problem","course","test","submit","solution","project","method","programming","eclipse","grading","score","deadline","feedback")
+title<-data$title
+key_words<-c("assignment","lecture","scala","error","function","test","submission","course","submit","code","example","week","list","problem","feedback","signature","grading","track")
+predicted_feature<-data$Relevance
+result_value<-autoAnn(thread_id,title,post_time,post_text,relevant_words,key_words,predicted_feature,"svmLinear",range=c(1,5))
