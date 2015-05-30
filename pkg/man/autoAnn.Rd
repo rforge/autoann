@@ -4,33 +4,45 @@
 autoAnn
 }
 \description{
-given the train data, this function could be used to predict the posts' class, relevance and quality in MOOC
-, it could also be implemented in similar dataset.
+Combination of function featureExtract and featurePredict,
+input: thread id, thread titles, post_time, post_text, relevant words in post text, key words in thread title,the feature to be predicted, the method and the range
+output: the data frame contains all the predict values with column name "Result".
 }
 \usage{
-autoAnn(trainSet,predictFormula,testFeature,methodName,range=NULL)
+autoAnn(thread_id,title,post_time,post_text,relevant_words,key_words,predicted_feature,method_name,range=NULL)
 }
 \arguments{
-  \item{trainSet}{the data frame of all the train data,
-including features we used to predict the result and the given result set.
+\item{thread_id}{
+the list of thread id
 }
-  \item{predictFormula}{formula to predict the result,
-if it is a classification, the formula should be like :
-as.factor(???)~. where ??? is the column name of the result to be predicted in trainSet.
-If it is a regression model, the formula is: ???~. where ??? is also the column name of the result to be predicted in trainSet.
+  \item{title}{
+the list of thread titles
 }
-  \item{testFeature}{data frame of all the features we used to predict the result. Note: the column numbers of testFeature should be n-1 where n is the column number of trainSet.
+  \item{post_time}{
+the list of post_time
 }
-  \item{methodName}{It is the name of method you want to use, it should be Character. The method name is the same as methods in package CARET.
+  \item{post_text}{
+the list of post_text
 }
-  \item{range}{if you want to do classification, you could just ignore it. If you want to do regression, it should be like: c(min,max). Where min is the smallest number and max is the greast number.
+  \item{relevant_words}{
+the list of relevant words in post text
 }
+  \item{key_words}{
+the list of key words in thread titles
 }
-\details{
-the package offers high accuracy in both classification and regression.
+  \item{predicted_feature}{
+the list of features to be predicted
+}
+  \item{method_name}{
+it is the name of method you want to use, it should be "Character"
+}
+  \item{range}{
+the last input value is the range,if you want to do classification, you could just ignore it.
+if you want to do regression, it should be like: c(min,max).Where min is the "smallest number" and "max" is the greast number
+}
 }
 \value{
-The return value is a data frame contains all the predict values with column name Result.
+the return value is a data frame contains all the predict values with column name "Result"
 }
 \author{
 Weizhe Liu
@@ -39,16 +51,7 @@ Kidzinski Lukasz
 \email{lukasz.kidzinski@epfl.ch}
 }
 \note{
-pay attention to the format of input value predictFormula, the format changes between classification and regression.
-}
-\examples{
-data(iris)
-set.seed(100) 
-trainRow<-sample(1:150,size=100)
-testRow<-setdiff(1:150,trainRow)
-trainSet<-iris[trainRow,]
-testFeature<-iris[testRow,1:4]
-result<-autoAnn(trainSet,as.factor(Species)~.,testFeature,"extraTrees")
+all the input list should contains the same length
 }
 \keyword{ MOOC}
-\keyword{ automatic annotation }
+\keyword{ automatic annotation}
