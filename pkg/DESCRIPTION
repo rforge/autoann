@@ -10,7 +10,7 @@ Author: Weizhe Liu [aut, cre],
   Kidzinski Lukasz [aut]
 Maintainer: Weizhe Liu <weizheliu1991@gmail.com>
 Depends: R (>= 3.1.0)
-Imports: caret
+Imports: caret, qdap, openNLP
 Description: Initially, this package is used to automatic annotate posts' class, relevance and quality in MOOC, it could also be implemented in similar dataset.
 License: GPL (>= 2)
 URL: http://www.r-project.org, http://kidzinski.com/
