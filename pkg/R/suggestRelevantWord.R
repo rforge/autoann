@@ -1,0 +1,13 @@
+suggestRelevantWord<-function(dataset){
+  library(qdap)
+  dataset<-bracketX(dataset,"angle")
+  dataset<-tolower(dataset)
+  rm_stopwords(dataset)
+  wordslist<-strsplit(dataset,"\\W+",perl=TRUE)
+  wordsvector<-unlist(wordslist)
+  freqlist<-table(wordsvector)
+  SortedFreqList<-sort(freqlist,decreasing=TRUE)
+  SortedFreqList<-as.data.frame(SortedFreqList)
+  colnames(SortedFreqList)<-"Count"
+  SortedFreqList
+}
